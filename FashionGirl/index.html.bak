@@ -1,0 +1,61 @@
+﻿<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>应用安装</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">  
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport"/>
+    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body class="col-sm-12" >
+<div class="text-center">
+    <h2>宝宝遥控车</h2>
+    <p ><img src="./icon-120.png" border="0"/></p>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th class="col-sm-2">版本号</th>
+                <th class="col-sm-6">备注</th>
+                <th class="col-sm-2">链接</th>
+            </tr>
+            <tr id="iosRow">
+                <th class="col-sm-2">1.0.1(430)</th>
+                <th class="col-sm-6">IOS</th>
+                <th class="col-sm-2"><a href="itms-services://?action=download-manifest&amp;url=https://raw.githubusercontent.com/heisedeyongheng/IosOta/master/BLECar/ios.plist">点我安装</a></th>
+            </tr>
+            <tr id="androidRow">
+                <th class="col-sm-2">1.0.1(255)</th>
+                <th class="col-sm-6">Android</th>
+                <th class="col-sm-2"><a href="./install.apk">点我安装</a></th>
+            </tr>
+        </thead>
+        <tbody id="mainTable">
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
+<script type="text/javascript">  
+    var browser={
+    versions:function(){
+        var u = navigator.userAgent, app = navigator.appVersion;
+          return {
+            trident: u.indexOf('Trident') > -1,
+            presto: u.indexOf('Presto') > -1, 
+            webKit: u.indexOf('AppleWebKit') > -1,
+            gecko: u.indexOf('Gecko') > -1 && u.indexOf('KHTML') == -1,
+            mobile: !!u.match(/AppleWebKit.*Mobile.*/), 
+            ios: !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/), 
+            android: u.indexOf('Android') > -1 || u.indexOf('Adr') > -1,
+            iPhone: u.indexOf('iPhone') > -1 , 
+            webApp: u.indexOf('Safari') == -1,
+            weixin: u.indexOf('MicroMessenger') > -1,
+            qq: u.match(/\sQQ/i) == " qq"
+         };
+       }(),       
+       language:(navigator.browserLanguage || navigator.language).toLowerCase()
+    }
+	
+	if(browser.versions.ios){ document.getElementById("androidRow").style.display="none";}
+	if(browser.versions.android){ document.getElementById("iosRow").style.display="none";}
+</script>  
